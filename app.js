@@ -4,10 +4,11 @@ const http         = require('http'),
       contentTypes = require('./utils/content-types'),
       sysInfo      = require('./utils/sys-info'),
       env          = process.env;
-
+let count = 0;
 let server = http.createServer(function (req, res) {
   let url = req.url;
   if (url == '/') {
+	count++;
     url += 'index.html';
   }
 
@@ -20,7 +21,12 @@ let server = http.createServer(function (req, res) {
   } else if (url == '/info/gen' || url == '/info/poll') {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Cache-Control', 'no-cache, no-store');
-    res.end(JSON.stringify(sysInfo[url.slice(6)]()));
+	info = sysInfo[url.slice(6)]();
+	info.push({
+		 name: 'Count',
+		value: count
+	});
+    res.end(JSON.stringify(info));
   } else {
 	if(url === '/loaderio-8eb8f8379effa193a04f5d801b49adc2/')
 		res.end('loaderio-8eb8f8379effa193a04f5d801b49adc2');
