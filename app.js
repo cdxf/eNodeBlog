@@ -21,7 +21,7 @@ let server = http.createServer(function (req, res) {
   } else if (url == '/info/gen' || url == '/info/poll') {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Cache-Control', 'no-cache, no-store');
-	info = sysInfo[url.slice(6)]();
+	let info = sysInfo[url.slice(6)]();
 	info.push({
 		 name: 'Count',
 		value: count
