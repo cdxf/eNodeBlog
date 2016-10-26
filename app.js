@@ -22,6 +22,9 @@ let server = http.createServer(function (req, res) {
     res.setHeader('Cache-Control', 'no-cache, no-store');
     res.end(JSON.stringify(sysInfo[url.slice(6)]()));
   } else {
+	if(url === '/loaderio-8eb8f8379effa193a04f5d801b49adc2/')
+		res.end('loaderio-8eb8f8379effa193a04f5d801b49adc2');
+	else{
     fs.readFile('./static' + url, function (err, data) {
       if (err) {
         res.writeHead(404);
@@ -35,6 +38,7 @@ let server = http.createServer(function (req, res) {
         res.end(data);
       }
     });
+	}
   }
 });
 
