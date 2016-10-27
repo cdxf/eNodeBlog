@@ -28,6 +28,6 @@ app.use(function(request, response) {
     response.status(404).render("404");
 });
 var server = http.createServer(app);
-server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function() {
-    console.log(`Blog started on port ${env.NODE_PORT || 3000}.`)
+server.listen(80, env.NODE_IP || 'localhost', function() {
+    console.log(`Blog started on port.`)
 });
