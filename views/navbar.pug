@@ -1,0 +1,37 @@
+nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+        .navbar-header
+            //Button for mobile devices
+            button.navbar-toggle(type='button', data-target='#navbarCollapse', data-toggle='collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand(href='#') Snoob's Blog
+        #navbarCollapse.collapse.navbar-collapse
+            ul.nav.navbar-nav
+                li.active
+                    a(href='#')  Books and Videos
+                li
+                    a(href='#')  Articles
+                li.dropdown
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        | Categories
+                        b.caret
+                    ul.dropdown-menu(role='menu')
+                        li
+                            a(href='#')  Web development
+                        li
+                            a(href='#')  Game Development
+                        li
+                            a(href='#')
+                                | Big Data and Business
+                                | Intelligence
+                        li
+                            a(href='#')  Virtualization and Cloud
+                        li
+                            a(href='#')  Networking and Servers
+                        li.divider
+                        li
+                            a(href='#')  Miscellaneous
+                li
+                    a(href='#')  Support
