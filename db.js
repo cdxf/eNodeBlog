@@ -2,6 +2,7 @@ var MongoClient = require('mongodb').MongoClient
     , assert = require('assert');
 // Connection URL
 var url = (process.env.MONGODB_URL || 'mongodb://localhost:27017') + '/myblog';
+console.log(url);
 var edb = null;
 let connect = function(callback){
     if( edb == null || edb == undefined){
