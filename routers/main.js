@@ -12,7 +12,6 @@ router.get("/", function(request, response) {
     articles.get(
         (docs)=> {
             locals.articles = docs;
-            console.log(docs);
             locals.marked = marked;
             locals.moment = moment;
             response.render("index");
