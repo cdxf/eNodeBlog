@@ -2,10 +2,12 @@ head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible',content="IE=edge")
         title= pageInfo.title
-        link(rel='stylesheet', href='bootstrap.css')
-        link(rel='stylesheet', href='bootstrap.min.css')
-        link(href='blog.css', rel='stylesheet')
+        link(rel='stylesheet', href='/bootstrap.css')
+        link(rel='stylesheet', href='/bootstrap.min.css')
         link(rel='stylesheet', href='https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css')
-        script(src="jquery.min.js")
-        script(async,src="bootstrap.min.js")
+        script(src="/jquery.min.js")
+        script(async,src="/bootstrap.min.js")
         script(src='https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js')
+        script.
+                hljs.initHighlightingOnLoad();
+        link(href='/blog.css', rel='stylesheet')

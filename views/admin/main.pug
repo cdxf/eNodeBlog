@@ -10,11 +10,12 @@ html
                 spellChecker : false,
                 showIcons: ["code", "table"],
                 renderingConfig: {
-                    singleLineBreaks: false,
                     codeSyntaxHighlighting: true,
                 },
             });
         })
 
     body
-        textarea(id="markdown")
+        form(action="/admin/post/create",method="post")
+            textarea(id="markdown",name="content")
+            input(type="submit")

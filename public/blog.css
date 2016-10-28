@@ -3,7 +3,7 @@
  */
 
 body {
-  font-family: "Helvetica", "Times New Roman", Times, serif;
+  font-family: "Helvetica Neue", Helveticam, "Times New Roman", Times, serif;
   color: #555;
 }
 
@@ -139,6 +139,8 @@ h6, .h6 {
 
 .blog-post {
   margin-bottom: 60px;
+  box-shadow: 0px 0px 2px 0px #5e5e5e;
+  padding: 10px;
 }
 .blog-post-title {
   margin-bottom: 5px;
@@ -163,4 +165,10 @@ h6, .h6 {
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
+}
+/*
+ * Hightlight
+*/
+.hljs{
+  background-color: transparent;
 }
