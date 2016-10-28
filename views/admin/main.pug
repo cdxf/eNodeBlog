@@ -1,0 +1,20 @@
+doctype html
+html
+    include ../header
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css')
+    script(src='https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js')
+    script(type='text/javascript').
+        $(document).ready(function(){
+            var simplemde = new SimpleMDE({
+                element: document.getElementById("markdown"),
+                spellChecker : false,
+                showIcons: ["code", "table"],
+                renderingConfig: {
+                    singleLineBreaks: false,
+                    codeSyntaxHighlighting: true,
+                },
+            });
+        })
+
+    body
+        textarea(id="markdown")

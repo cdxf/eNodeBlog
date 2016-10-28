@@ -1,8 +1,7 @@
 /**
  * Created by Snoob on 9/29/2016.
  */
-let [express,http,range,path,logger,bodyParser] =
-    [require("express"),require("http"),require("range"),require("path"),require("morgan"),require("body-parser")];
+let {express,http,range,path,logger,bodyParser} = require('./include.js');
 let env = process.env;
 let app = express();
 let entries = [];
@@ -13,13 +12,8 @@ app.use(express.static('public'));
 app.set("view engine", "pug");
 app.use(logger("tiny"));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.get("/", function(request, response) {
-    reqLocal = response.locals;
-    reqLocal.pageInfo =  {};
-    reqLocal.pageInfo.title = "Snoob's Blog";
-    reqLocal.active = false;
-    response.render("index");
-});
+app.use('/',require('./routers/main'));
+app.use('/admin',require('./routers/admin.js'));
 app.use(function(request, response) {
     reqLocal = response.locals;
     reqLocal.pageInfo =  {};
