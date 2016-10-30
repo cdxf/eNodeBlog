@@ -16,10 +16,12 @@ html
                 p.lead.blog-description The official example template of creating a blog with Bootstrap.
             .row
                 .col-md-10.blog-main
+                    hr
                     each article in articles
                         .blog-post
                             h1.blog-post-title
-                                a(href='post/' + article._id)=article.title
+                                strong
+                                    a(href='post/' + article._id)=article.title
                             p.blog-post-meta
                                 | #{moment(article.created_date).format('l')} by
                                 a(href='#')= article.author ? ' ' + article.author : ' Snoob'
