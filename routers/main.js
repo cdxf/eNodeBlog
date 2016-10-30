@@ -15,6 +15,7 @@ router.get("/", function(request, response) {
             locals.marked = marked;
             locals.moment = moment;
             response.render("index");
+
         }
     );
 
