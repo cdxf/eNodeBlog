@@ -2,7 +2,7 @@ let database = require('../db.js');
 let redis = require('../include.js').redis;
 let articles = {};
 let cache = null;
-redisOptions = {password:process.env.REDIS_PASSWORD || null, port: 16379};
+redisOptions = {password:process.env.REDIS_PASSWORD, port: 6379};
 sub = redis.createClient(redisOptions);pub = redis.createClient(redisOptions);
 client = redis.createClient(redisOptions);
 sub.subscribe("articles");
