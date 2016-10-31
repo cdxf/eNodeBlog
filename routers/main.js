@@ -12,7 +12,7 @@ router.get("/", function(request, response) {
     locals.pageInfo.title = "Snoob's Blog";
     locals.active = false;
     if(cacheTemplate !== null){
-        response.end(cacheTemplate);
+        response.send(cacheTemplate);
     }
     else {
         console.log("Render");
