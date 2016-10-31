@@ -20,6 +20,7 @@
     "passport-local": "latest",
     "pug": "latest",
     "range": "latest",
+    "redis": "latest",
     "simplemde": "latest"
   }
 }

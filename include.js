@@ -4,5 +4,6 @@ let lib =
     range: require("range"),
     path: require("path"),
     logger: require("morgan"),
-    bodyParser: require("body-parser")};
+    bodyParser: require("body-parser"),
+    redis : require("redis")};
 module.exports = lib;

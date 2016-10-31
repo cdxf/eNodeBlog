@@ -1,7 +1,18 @@
 let database = require('../db.js');
-let changed = true;
-let articlesCache = null;
+let redis = require('../include.js').redis;
 let articles = {};
+let cache = null;
+sub = redis.createClient();pub = redis.createClient();
+client = redis.createClient();
+sub.subscribe("articles");
+articles.onChange = function(callback){
+    sub.on("message", function (channel, message) {
+        if(channel === "articles" && message == 1){
+            callback();
+        }
+    });
+};
+articles.onChange(function(){cache = null;})
 articles.insert = function(title,author,content,callback){
     database((db)=>{
             let articles = db.collection("articles");
@@ -12,26 +23,27 @@ articles.insert = function(title,author,content,callback){
                 created_date: new Date()
             },function(err,result){
                 console.log("Inserted a document into the articles collection.");
-                changed = true;
+                pub.publish("articles",1);
                 callback();
             });
         }
     );
 };
 articles.get = function(callback){
-    if(changed === false) return callback(articlesCache);
-    else{
-    database((db)=>{
-            let articles = db.collection("articles");
-            articles.find({},{sort: [['created_date','desc']]},function(err,result){
-                result.toArray().then(function(docs,err){
-                    changed = false;
-                    articlesCache = docs;
-                    callback(articlesCache);
-                });
-            });
-        }
-    );
-    }
+            if(cache !== null){
+                    callback(cache);
+                }
+            else {
+                database((db) => {
+                        let articles = db.collection("articles");
+                        articles.find({}, {sort: [['created_date', 'desc']]}, function (err, result) {
+                            result.toArray().then(function (docs, err) {
+                                cache = docs;
+                                callback(docs);
+                            });
+                        });
+                    }
+                );
+            }
 };
 module.exports = articles;
