@@ -2,8 +2,9 @@ let database = require('../db.js');
 let redis = require('../include.js').redis;
 let articles = {};
 let cache = null;
-sub = redis.createClient({password:process.env.REDIS_PASSWORD});pub = redis.createClient({password:process.env.REDIS_PASSWORD});
-client = redis.createClient({password:process.env.REDIS_PASSWORD});
+redisOptions = {password:process.env.REDIS_PASSWORD || null};
+sub = redis.createClient(redisOptions);pub = redis.createClient(redisOptions);
+client = redis.createClient(redisOptions);
 sub.subscribe("articles");
 articles.onChange = function(callback){
     sub.on("message", function (channel, message) {
